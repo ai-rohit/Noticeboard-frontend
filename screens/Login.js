@@ -27,7 +27,7 @@ function Login() {
           <SubTitle customStyles={styles.commonText}>Lets Get Started!</SubTitle>
         </View>
         <View style={styles.inputContainer}> 
-          <TextBox placeholder={"Username or Email"}/>
+          <TextBox placeholder={"Phone, email or username"}/>
           <TextBox
             isSecured={!pwVisible}
             placeholder={"Password"} 
@@ -75,13 +75,13 @@ const styles = StyleSheet.create({
     flex:2,
     justifyContent:"space-around",
   },
-  buttonContainer:{
-    flex: 1,
-    justifyContent:"flex-end"
-  },
   inputContainer:{
     justifyContent:"center",
     alignItems:"center",
+  },
+  buttonContainer:{
+    flex: 1,
+    justifyContent:"flex-end"
   },
   btn:{
     marginTop:20,
