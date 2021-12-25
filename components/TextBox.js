@@ -1,25 +1,51 @@
-import {TextInput, StyleSheet, Dimensions} from "react-native";
+import {TextInput, StyleSheet, Dimensions, View} from "react-native";
 import colors from "../config/color";
+import {Ionicons} from "@expo/vector-icons"
 
-function TextBox({placeholder, onChange, value}){
+function TextBox({placeholder, onChange, value, icon, isSecured}){
     return (
-        <TextInput style={styles.textbox} placeholder={placeholder} onChangeText={(text)=> onChange(text)} value={value}/>
+        <View style={styles.inputContainer}>
+            <TextInput
+            underlineColorAndroid="transparent"
+            spellCheck={false}
+            secureTextEntry={isSecured? isSecured:false} 
+            style={styles.textbox}
+            placeholder={placeholder} 
+            placeholderTextColor={colors.dimWhite}
+            placeholderStyle={styles.placeholder}
+            onChangeText={(text)=> onChange? onChange(text):null}
+            value={value}
+            />
+
+            {icon?<Ionicons name={icon.name} size={20} color={colors.dimWhite} style={styles.icon} onPress={()=> icon.onPress?icon.onPress():null}/>:null}  
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
-    textbox: {
-        borderWidth: 1,
+    inputContainer:{
+        flexDirection: "row",
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: "80%",
+        height: Dimensions.get("window").height / 14,
+        borderWidth: 2,
         borderColor: colors.secondaryColor,
         borderRadius: 15,
-        padding: 10,
         margin: 10,
-        width: "80%",
-        height: Dimensions.get("window").height / 16,
-        fontSize: 16,
-        fontWeight: "bold",
+        fontSize: 20
+    },
+    textbox: {
+        flex: 1,
+        height: "100%",
+        paddingLeft: 10,
         color: colors.mainWhite
-
+    },
+    icon:{
+        paddingRight: 10
+    },
+    placeholder:{
+       fontSize: 40
     }
 })
 

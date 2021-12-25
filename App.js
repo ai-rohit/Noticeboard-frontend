@@ -1,30 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
-import AppText from './components/AppText';
-import Button from "./components/Button";
-import TextBox from './components/TextBox';
+import { StyleSheet, Text, TextInput, View, KeyboardAvoidingView } from 'react-native';
+
+import Login from './screens/Login';
 
 export default function App() {
-  const [email, setEmail] = useState("");
-
-  const onEmailChange = (text) =>{
-    setEmail(text);
-  }
-
-  const onPress = (data)=>{
-    console.log(data)
-  }
+  
   return (
-    <View style={styles.container}>
-      <Text style={{color:"#EDEDEE"}}>Hello</Text>
-      <Text style={{color:"#333139"}}>asd</Text>
-      <AppText>Hello</AppText>
+    <KeyboardAvoidingView style={styles.container} behavior='padding'>
       <StatusBar style="auto" />
-      <TextBox placeholder={"Enter your email"} onChange={onEmailChange} value={email}/>
-      {/* <TextInput/> */}
-      <Button text="Sign In" onPress={onPress}/>
-    </View>
+      <Login />
+    </KeyboardAvoidingView>
   );
 }
 
