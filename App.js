@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, KeyboardAvoidingView } from 'react-native';
+import Container from './components/Container';
 import GroupCard from './components/GroupCard';
+import GroupList from './components/GroupList';
 import colors from './config/color';
 
 import Login from './screens/Login';
@@ -8,11 +10,13 @@ import Login from './screens/Login';
 export default function App() {
   
   return (
-    <KeyboardAvoidingView style={styles.container} behavior='padding'>
+    <Container style={styles.container}>
+    <KeyboardAvoidingView behavior='padding'>
+        <GroupList/>
       <StatusBar style="auto" />
       {/* <Login /> */}
-      <GroupCard/>
     </KeyboardAvoidingView>
+      </Container>
   );
 }
 

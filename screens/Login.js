@@ -19,7 +19,7 @@ function Login() {
   }
 
   return (
-    <Container style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.form}>   
         <View style={styles.textContainer}>
           <Title customStyles={styles.header}>Let's sign you in.</Title>
@@ -43,7 +43,7 @@ function Login() {
         <Button text="Sign In" customStyles={styles.btn}/>
       </View>
 
-    </Container>
+    </View>
   );
 }
 

@@ -5,16 +5,16 @@ import {Ionicons} from "@expo/vector-icons";
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
-function GroupCard(){
+function GroupCard({item, customStyle}){
     return (
-        <View style={styles.card}>
+        <View style={[styles.card, customStyle]}>
             <View style={styles.nameContainer}>
                 <View style={styles.bar}></View>
-                <Text style={styles.text} numberOfLines={2}>NCIS high School (2)</Text>
+                <Text style={styles.text} numberOfLines={3}>{item.name}</Text>
             </View>
             <View style={styles.imgTextContainer}>
                 <Image source={require("../assets/favicon.png")} style={styles.image}/>
-                <Text style={styles.representText} numberOfLines={5}>What this group represents in Short and some more text and some more and some more and some more and  some more text and some more and some more and some more an e and some more and some more an</Text>
+                <Text style={styles.representText} numberOfLines={5}>{item.description}</Text>
             </View>
             <View style={styles.iconContainer}>
                 <Ionicons name="person" color={colors.dimWhite} style={styles.profileIcon} size={14}/>
