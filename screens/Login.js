@@ -7,6 +7,7 @@ import Button from "../components/Button";
 import { Title, SubTitle, AppText, KeyboardAvoidingView} from "../components/AppText";
 import colors from "../config/color";
 
+
 function Login() {
   const [email, setEmail] = useState("");
   const [pwVisible, setPwVisible] = useState(false);
@@ -19,7 +20,7 @@ function Login() {
   }
 
   return (
-    <View style={styles.container}>
+    <Container style={styles.container}>
       <View style={styles.form}>   
         <View style={styles.textContainer}>
           <Title customStyles={styles.header}>Let's sign you in.</Title>
@@ -42,8 +43,7 @@ function Login() {
         <AppText customStyles={styles.smallText}>Don't have an account? <AppText customStyles={styles.bold}>Register</AppText></AppText>
         <Button text="Sign In" customStyles={styles.btn}/>
       </View>
-
-    </View>
+    </Container>
   );
 }
 
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     alignItems: "center",
-    width:"100%"
+    width:"100%",
   },
   textContainer:{
     alignSelf:"center",
@@ -81,7 +81,8 @@ const styles = StyleSheet.create({
   },
   buttonContainer:{
     flex: 1,
-    justifyContent:"flex-end"
+    justifyContent:"flex-end",
+    marginBottom:50
   },
   btn:{
     marginTop:20,

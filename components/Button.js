@@ -1,3 +1,5 @@
+import React from "react";
+
 import { TouchableOpacity, StyleSheet, Dimensions, Text } from "react-native";
 import colors from "../config/color";
 
@@ -5,6 +7,7 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 function Button({text, customStyles, onPress}){
+    console.log("button")
     return (
         <TouchableOpacity style={[styles.button, customStyles]} onPress={()=>onPress(data)}>
             <Text style={styles.text}>{text}</Text>
@@ -28,4 +31,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Button;
+export default React.memo(Button);

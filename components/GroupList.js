@@ -1,5 +1,7 @@
 import {View, StyleSheet, FlatList} from "react-native";
+import colors from "../config/color";
 import GroupCard from "./GroupCard";
+import Container from "./Container";
 
 const GroupList = ()=>{
     const data = [
@@ -31,8 +33,9 @@ const GroupList = ()=>{
 
     ]
     return (
-        <View style={styles.listContainer}>
+        <Container style={styles.listContainer}>
             <FlatList
+                contentContainerStyle={{paddingBottom:40}}
                 data={data}
                 renderItem = {({item})=>{
                     return <GroupCard item={item} customStyle={styles.card}/>
@@ -40,13 +43,15 @@ const GroupList = ()=>{
                 keyExtractor={(item)=>item._id}
                 showsVerticalScrollIndicator={false}
             />
-        </View>
+        </Container>
     )
 }
 
 const styles = StyleSheet.create({
     listContainer:{
-        flex: 1
+        flex: 1,
+        alignItems: 'center',
+        paddingBottom: 20
     },
     card:{
         marginBottom: 10

@@ -1,23 +1,30 @@
+import React from "react";
 import {Text, Platform, StyleSheet} from "react-native";
 import colors from "../config/color";
 
-function Title({children, customStyles}){
+const Title = React.memo(function Title({children, customStyles}){
+    console.log("title");
     return (
         <Text style={[styles.title, customStyles]}>{children}</Text>
     )
 }
+)
 
-function SubTitle({children, customStyles}){
+const SubTitle = React.memo(function SubTitle({children, customStyles}){
+    console.log("subtitle");
     return (
         <Text style={[styles.subTitle, customStyles]}>{children}</Text>
     )
 }
+)
 
-function AppText({children, customStyles}){
+const AppText = React.memo(function AppText({children, customStyles}){
+    console.log("t");
     return (
         <Text style={[styles.text, customStyles]}>{children}</Text>
     )
 }
+)
 
 // function BoldText({children, customStyles}){
 //     return (

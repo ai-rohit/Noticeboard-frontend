@@ -1,4 +1,5 @@
 import {Platform, StatusBar, SafeAreaView, View, StyleSheet} from "react-native"
+import colors from "../config/color";
 
 function Container({children, style}){
     if(  Platform.OS === "android" ){
@@ -14,6 +15,9 @@ function Container({children, style}){
 const styles = StyleSheet.create({
     container:{
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        backgroundColor: colors.primaryColor,
+        paddingBottom: 50
+        // marginBottom: 100
     }
 })
 
