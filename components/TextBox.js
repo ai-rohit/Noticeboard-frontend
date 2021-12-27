@@ -2,12 +2,14 @@ import {TextInput, StyleSheet, Dimensions, View} from "react-native";
 import colors from "../config/color";
 import {Ionicons} from "@expo/vector-icons"
 
-function TextBox({placeholder, onChange, value, icon, isSecured}){
+function TextBox({placeholder, onChange, value, icon, isSecured, lines}){
     console.log("textbox");
     return (
         <View style={styles.inputContainer}>
             <TextInput
             underlineColorAndroid="transparent"
+            multiline={lines? true: false}
+            numberOfLines={lines? lines:1}
             spellCheck={false}
             secureTextEntry={isSecured? isSecured:false} 
             style={styles.textbox}

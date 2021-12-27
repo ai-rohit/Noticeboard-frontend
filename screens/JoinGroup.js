@@ -32,9 +32,6 @@ const styles = StyleSheet.create({
         alignItems:"center",
         marginBottom:20
     },  
-    text:{
-        backgroundColor:"red"
-    }
 })
 
 export default JoinGroup;

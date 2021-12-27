@@ -4,6 +4,7 @@ import { MaterialCommunityIcons} from "@expo/vector-icons";
 import colors from "../config/color";
 import Groups from "../screens/Groups";
 import JoinGroup from "../screens/JoinGroup";
+import CreateGroup from "../screens/CreateGroup";
 
   const Tab = createBottomTabNavigator();
 
@@ -12,6 +13,7 @@ import JoinGroup from "../screens/JoinGroup";
         <Tab.Navigator screenOptions={{
           headerShown: false,
           tabBarShowLabel:false,
+          
           tabBarActiveTintColor: colors.dimWhite,
           tabBarStyle:styles.tab
         }} >
@@ -25,7 +27,7 @@ import JoinGroup from "../screens/JoinGroup";
             />
           ),
         }} />
-          <Tab.Screen name="Settings" component={JoinGroup}  options={{
+          <Tab.Screen name="Settings" component={CreateGroup}  options={{
           tabBarIcon: () => (
             <MaterialCommunityIcons
               name="face-profile"
