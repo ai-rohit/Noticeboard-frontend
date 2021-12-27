@@ -51,10 +51,11 @@ const styles = StyleSheet.create({
     listContainer:{
         flex: 1,
         alignItems: 'center',
-        paddingBottom: 20
+        backgroundColor: colors.mainDark,
     },
     card:{
-        marginBottom: 10
+        marginBottom: 15,
+        backgroundColor: colors.primaryColor,
     }
 })
 export default GroupList;

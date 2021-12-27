@@ -1,4 +1,4 @@
-import {View, Image, StyleSheet, Text, Dimensions} from "react-native";
+import {View, Image, StyleSheet, Text, Dimensions, TouchableOpacity} from "react-native";
 import colors from "../config/color";
 import {Ionicons} from "@expo/vector-icons";
 
@@ -7,7 +7,7 @@ const height = Dimensions.get("window").height;
 
 function GroupCard({item, customStyle}){
     return (
-        <View style={[styles.card, customStyle]}>
+        <TouchableOpacity style={[styles.card, customStyle]}>
             <View style={styles.nameContainer}>
                 <View style={styles.bar}></View>
                 <Text style={styles.text} numberOfLines={3}>{item.name}</Text>
@@ -20,7 +20,7 @@ function GroupCard({item, customStyle}){
                 <Ionicons name="person" color={colors.dimWhite} style={styles.profileIcon} size={14}/>
                 <Text style={styles.num}>10 / 100</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 }
 
