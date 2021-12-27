@@ -5,6 +5,7 @@ import colors from "../config/color";
 import GroupList from "../components/GroupList";
 import Groups from "../screens/Groups";
 import Login from "../screens/Login";
+import JoinGroup from "../screens/JoinGroup";
 
 function HomeScreen() {
     return (
@@ -34,14 +35,9 @@ function HomeScreen() {
             backgroundColor: "#000",
             position:"absolute",
             borderTopWidth: 0,
-            // position:"absolute",
             bottom: 15,
             left: 15,
             right: 15,
-            // elevation: 0,
-            // marginHorizontal: 0,
-            // // width:"90%",
-            // // alignSelf:"center",
             borderRadius: 10,
             height:60,
             width:"90%"
@@ -57,7 +53,7 @@ function HomeScreen() {
             />
           ),
         }} />
-          <Tab.Screen name="Settings" component={SettingsScreen}  options={{
+          <Tab.Screen name="Settings" component={JoinGroup}  options={{
           tabBarIcon: () => (
             <MaterialCommunityIcons
               name="hand-heart"
