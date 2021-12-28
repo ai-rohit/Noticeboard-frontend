@@ -7,6 +7,7 @@ import TabNav from './navigation/TabNav';
 import { NavigationContainer } from '@react-navigation/native';
 import Login from './screens/Login';
 import Register from './screens/Register';
+import RegisterCode from './screens/RegisterCode';
 
 export default function App() {
   
@@ -14,7 +15,7 @@ export default function App() {
     <NavigationContainer style={styles.container}>
       <StatusBar style="auto" /> 
         {/* <TabNav/> */}
-        <Register />
+        <RegisterCode/>
         {/* <Login/> */}
     </NavigationContainer>
   );
