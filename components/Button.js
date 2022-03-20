@@ -9,7 +9,7 @@ const windowHeight = Dimensions.get("window").height;
 function Button({text, customStyles, onPress}){
     console.log("button")
     return (
-        <TouchableOpacity style={[styles.button, customStyles]} onPress={()=>onPress(data)}>
+        <TouchableOpacity style={[styles.button, customStyles]} onPress={()=>onPress()}>
             <Text style={styles.text}>{text}</Text>
         </TouchableOpacity>
     )

@@ -1,24 +1,63 @@
 import {Text, View, StyleSheet} from "react-native";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import {Permissions, Notifications} from "expo";
+// import * as firebase from "firebase";
 
 import Container from "../components/Container";
 import TextBox from "../components/TextBox";
 import Button from "../components/Button";
 import { Title, SubTitle, AppText, KeyboardAvoidingView} from "../components/AppText";
 import colors from "../config/color";
+import { login } from "../api/authApi";
 
 
 function Login() {
   const [email, setEmail] = useState("");
   const [pwVisible, setPwVisible] = useState(false);
+  const [password, setPassword] = useState("");
+
+  // useEffect(()=>{
+  //   registerPushNotifications();
+  // })
+  // const registerPushNotifications = async()=>{
+  //   const { status } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+  //   const perm = await Permissions.getAsync(Permissions.NOTIFICATIONS)
+  //   let finalStatus = status;
+
+  //   if(status !== "granted"){
+  //     const {status} = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+  //     finalStatus = status;
+  //   }
+
+  //   if(finalStatus !== "granted"){
+  //     return;
+  //   }
+
+  //   let token = await Notifications.getExpoPushTokenAsync();
+  //   console.log(token);
+  // }
+
   const onEmailChange = (text) =>{
     setEmail(text);
+  }
+
+  const onPassChange = (text) =>{
+    setPassword(text);
   }
 
   const onShowPw = ()=>{
     setPwVisible(!pwVisible);
   }
 
+  const handleLogin = async () => {
+    try{
+      console.log("test");
+      const res = await login(email, password);
+      console.log(res);
+    }catch(err){
+      console.error(err);
+    }
+  }
   return (
     <Container style={styles.container}>
       <View style={styles.form}>   
@@ -28,12 +67,12 @@ function Login() {
           <SubTitle customStyles={styles.commonText}>Lets Get Started!</SubTitle>
         </View>
         <View style={styles.inputContainer}> 
-          <TextBox placeholder={"Phone, email or username"}/>
+          <TextBox placeholder={"Phone, email or username"} onChange={onEmailChange} value={email}/>
           <TextBox
             isSecured={!pwVisible}
             placeholder={"Password"} 
-            onChange={onEmailChange} 
-            value={email} 
+            onChange={onPassChange} 
+            value={password} 
             icon={{name:pwVisible?"eye-off":"eye", onPress:onShowPw}}
           />
         </View>
@@ -41,7 +80,7 @@ function Login() {
 
       <View style={styles.buttonContainer}>
         <AppText customStyles={styles.smallText}>Don't have an account? <AppText customStyles={styles.bold}>Register</AppText></AppText>
-        <Button text="Sign In" customStyles={styles.btn}/>
+        <Button text="Sign In" customStyles={styles.btn} onPress={handleLogin}/>
       </View>
     </Container>
   );
