@@ -53,7 +53,7 @@ function Login() {
   const handleLogin = async () => {
     try{
       const res = await login(email, password);
-      console.log(res);
+      console.log("response",res);
       if(res.status==="success"){
         storeData("token", res.data.token);
       }
