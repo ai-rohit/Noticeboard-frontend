@@ -9,6 +9,7 @@ import Button from "../components/Button";
 import { Title, SubTitle, AppText, KeyboardAvoidingView} from "../components/AppText";
 import colors from "../config/color";
 import { login } from "../api/authApi";
+import { getData, storeData } from "../utils/authStorage";
 
 
 function Login() {
@@ -51,9 +52,12 @@ function Login() {
 
   const handleLogin = async () => {
     try{
-      console.log("test");
       const res = await login(email, password);
       console.log(res);
+      if(res.status==="success"){
+        storeData("token", res.data.token);
+      }
+      console.log(await getData("token"));
     }catch(err){
       console.error(err);
     }
