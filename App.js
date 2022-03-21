@@ -11,15 +11,25 @@ import Register from './screens/Register';
 import RegisterCode from './screens/RegisterCode';
 import NoticeScreen from './screens/NoticeScreen';
 import AuthStack from "./navigation/AuthStack";
+import { getData } from "./utils/authStorage";
+import { useEffect, useState } from "react";
 
 export default function App() {
-  
+  const [token, setToken] = useState(null);
+  const getToken = async () => {
+    const token = await getData("token");
+    setToken(token);
+  }
+  useEffect(()=>{
+    getToken();
+  })
   return (
     <NavigationContainer style={styles.container}>
       <StatusBar style="auto" /> 
         {/* <TabNav/> */}
-        <AuthStack/>
+        
         {/* <Login/> */}
+        {token? <TabNav/> : <AuthStack/>}
     </NavigationContainer>
   );
 }
