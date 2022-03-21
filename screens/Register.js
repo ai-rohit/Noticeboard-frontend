@@ -1,14 +1,20 @@
 import TextBox from "../components/TextBox";
 import Button from "../components/Button";
 import Container from "../components/Container";
-import { Title, SubTitle } from "../components/AppText";
-import { KeyboardAvoidingView, StyleSheet, View } from "react-native";
+import { Title, SubTitle, AppText } from "../components/AppText";
+import { KeyboardAvoidingView, StyleSheet, View, TouchableOpacity } from "react-native";
 import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
+import colors from "../config/color";
 
-const Register = ()=>{
+const Register = ({navigation})=>{
+
+    const navigateToLogin = ()=>{
+        navigation.navigate("Login")
+    }
     return (
         <Container style={styles.container}>
             <KeyboardAvoidingView behavior="position" style={{ width:"100%"}}>
+                <TouchableOpacity onPress={navigateToLogin}><AppText customStyles={styles.login}>&lt; Login</AppText></TouchableOpacity>
                 <SubTitle customStyles={styles.text}>Create Your Account</SubTitle>
                 <View style={styles.form}>
                     <TextBox placeholder={"Name"}/>
@@ -36,8 +42,14 @@ const styles = StyleSheet.create({
     },
     btn:{
         marginTop:15
+    },
+    login:{
+        alignSelf:"flex-start",
+        marginLeft: 30,
+        fontSize: 16,
+        marginBottom:20,
+        color: colors.mainWhite
     }
-
 })  
 
 export default Register;

@@ -18,7 +18,7 @@ const SubTitle = React.memo(function SubTitle({children, customStyles}){
 }
 )
 
-const AppText = React.memo(function AppText({children, customStyles}){
+const AppText = React.memo(function AppText({children, customStyles, onPress}){
     console.log("t");
     return (
         <Text style={[styles.text, customStyles]}>{children}</Text>

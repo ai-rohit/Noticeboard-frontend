@@ -1,5 +1,6 @@
+import "react-native-gesture-handler";
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Container from './components/Container';
 import GroupList from './components/GroupList';
 import colors from './config/color';
@@ -9,6 +10,7 @@ import Login from './screens/Login';
 import Register from './screens/Register';
 import RegisterCode from './screens/RegisterCode';
 import NoticeScreen from './screens/NoticeScreen';
+import AuthStack from "./navigation/AuthStack";
 
 export default function App() {
   
@@ -16,7 +18,7 @@ export default function App() {
     <NavigationContainer style={styles.container}>
       <StatusBar style="auto" /> 
         {/* <TabNav/> */}
-        <Login/>
+        <AuthStack/>
         {/* <Login/> */}
     </NavigationContainer>
   );

@@ -1,4 +1,4 @@
-import {Text, View, StyleSheet} from "react-native";
+import {Text, View, StyleSheet, TouchableOpacity} from "react-native";
 import { useEffect, useState } from 'react';
 import {Permissions, Notifications} from "expo";
 // import * as firebase from "firebase";
@@ -12,7 +12,7 @@ import { login } from "../api/authApi";
 import { getData, storeData } from "../utils/authStorage";
 
 
-function Login() {
+function Login({navigation}) {
   const [email, setEmail] = useState("");
   const [pwVisible, setPwVisible] = useState(false);
   const [password, setPassword] = useState("");
@@ -50,6 +50,10 @@ function Login() {
     setPwVisible(!pwVisible);
   }
 
+  const navigateRegister = ()=>{
+    navigation.navigate("Register");
+  }
+
   const handleLogin = async () => {
     try{
       const res = await login(email, password);
@@ -83,7 +87,7 @@ function Login() {
       </View>
 
       <View style={styles.buttonContainer}>
-        <AppText customStyles={styles.smallText}>Don't have an account? <AppText customStyles={styles.bold}>Register</AppText></AppText>
+        <AppText customStyles={styles.smallText}>Don't have an account? <TouchableOpacity onPress={navigateRegister}><AppText customStyles={styles.bold}>Register</AppText></TouchableOpacity></AppText>
         <Button text="Sign In" customStyles={styles.btn} onPress={handleLogin}/>
       </View>
     </Container>
