@@ -1,11 +1,21 @@
 import { createStackNavigator } from "@react-navigation/stack";
+import React, {useContext} from "react";
+import {ModalContext} from "../context/context";
 import Groups from "../screens/Groups";
 import NoticeScreen from "../screens/NoticeScreen";
-import {TouchableOpacity, Image, StyleSheet} from "react-native"
+import {TouchableOpacity, Image, StyleSheet, Modal} from "react-native"
 
 const Stack = createStackNavigator();
 
 function AppStack(){
+  const modalContext = useContext(ModalContext);
+
+  const handleProfilePress = ()=>{
+    const isModalVisible = modalContext.isProfileModalOpen;
+    console.log(isModalVisible);
+    modalContext.setIsProfileModalOpen(!isModalVisible);
+  }
+
   return(
     <Stack.Navigator screenOptions={{
       // headerTransparent: true,
@@ -15,7 +25,7 @@ function AppStack(){
         fontSize:20,
       },
       headerRight: ()=>(
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleProfilePress}>
           <Image source={require("../assets/images/eleven.png")} style={styles.image}/>
         </TouchableOpacity>
       ),
@@ -28,6 +38,7 @@ function AppStack(){
     }}>
       <Stack.Screen name="GroupList" component={Groups} options={{title:"Groups"}}/>
       <Stack.Screen name="Notices" component={NoticeScreen} options={{title:"Notices"}}/>
+
     </Stack.Navigator>
   );
 }

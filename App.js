@@ -9,9 +9,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import AuthStack from "./navigation/AuthStack";
 import { getData } from "./utils/authStorage";
 import { useEffect, useState } from "react";
+import { ModalContext } from "./context/context";
 
 export default function App() {
   const [token, setToken] = useState(null);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+
   const getToken = async () => {
     const token = await getData("token");
     setToken(token);
@@ -20,13 +23,15 @@ export default function App() {
     getToken();
   })
   return (
-    <NavigationContainer style={styles.container}>
-      <StatusBar style="auto" /> 
-        {/* <TabNav/> */}
-        
-        {/* <Login/> */}
-        {token? <TabNav/> : <AuthStack/>}
-    </NavigationContainer>
+    <ModalContext.Provider value={{isProfileModalOpen, setIsProfileModalOpen}}>
+      <NavigationContainer style={styles.container}>
+        <StatusBar style="auto" /> 
+          {/* <TabNav/> */}
+          
+          {/* <Login/> */}
+          {token? <TabNav/> : <AuthStack/>}
+      </NavigationContainer>
+    </ModalContext.Provider>
   );
 }
 
