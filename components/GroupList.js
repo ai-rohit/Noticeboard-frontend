@@ -3,7 +3,7 @@ import colors from "../config/color";
 import GroupCard from "./GroupCard";
 import Container from "./Container";
 
-const GroupList = ()=>{
+const GroupList = ({navigation})=>{
     const data = [
         {
             _id:"1",
@@ -32,13 +32,16 @@ const GroupList = ()=>{
         }
 
     ]
+    const navigateToNotice = ()=>{
+        navigation.navigate("Notices");
+    }
     return (
         <Container style={styles.listContainer}>
             <FlatList
                 contentContainerStyle={{paddingBottom:40}}
                 data={data}
                 renderItem = {({item})=>{
-                    return <GroupCard item={item} customStyle={styles.card}/>
+                    return <GroupCard item={item} customStyle={styles.card} onPress={navigateToNotice}/>
                 }}
                 keyExtractor={(item)=>item._id}
                 showsVerticalScrollIndicator={false}

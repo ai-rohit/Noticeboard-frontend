@@ -5,6 +5,7 @@ import colors from "../config/color";
 import Groups from "../screens/Groups";
 import JoinGroup from "../screens/JoinGroup";
 import CreateGroup from "../screens/CreateGroup";
+import AppStack from "./AppStack";
 
   const Tab = createBottomTabNavigator();
 
@@ -17,7 +18,7 @@ import CreateGroup from "../screens/CreateGroup";
           tabBarActiveTintColor: colors.dimWhite,
           tabBarStyle:styles.tab
         }} >
-          <Tab.Screen name="Home" component={Groups} options={{
+          <Tab.Screen name="Groups" component={AppStack} options={{
           tabBarIcon: () => (
             <MaterialCommunityIcons
               name="home-group"

@@ -1,0 +1,44 @@
+import { createStackNavigator } from "@react-navigation/stack";
+import Groups from "../screens/Groups";
+import NoticeScreen from "../screens/NoticeScreen";
+import {TouchableOpacity, Image, StyleSheet} from "react-native"
+
+const Stack = createStackNavigator();
+
+function AppStack(){
+  return(
+    <Stack.Navigator screenOptions={{
+      // headerTransparent: true,
+      headerTintColor: "white",
+      headerMode:"float",
+      headerTitleStyle:{
+        fontSize:20,
+      },
+      headerRight: ()=>(
+        <TouchableOpacity>
+          <Image source={require("../assets/images/eleven.png")} style={styles.image}/>
+        </TouchableOpacity>
+      ),
+      headerStyle:{
+        backgroundColor:"#363642",
+        borderBottomWidth:5,
+        borderBottomColor:"#363642"
+      }
+    
+    }}>
+      <Stack.Screen name="GroupList" component={Groups} options={{title:"Groups"}}/>
+      <Stack.Screen name="Notices" component={NoticeScreen} options={{title:"Notices"}}/>
+    </Stack.Navigator>
+  );
+}
+
+const styles = StyleSheet.create({
+  image:{
+    height:30,
+    width:30,
+    borderRadius:15,
+    marginRight:10,
+    alignSelf: "center"
+  }
+})
+export default AppStack;

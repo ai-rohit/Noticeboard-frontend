@@ -5,9 +5,9 @@ import {Ionicons} from "@expo/vector-icons";
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
-function GroupCard({item, customStyle}){
+function GroupCard({item, onPress, customStyle}){
     return (
-        <TouchableOpacity style={[styles.card, customStyle]}>
+        <TouchableOpacity style={[styles.card, customStyle]} onPress={()=>onPress()}>
             <View style={styles.nameContainer}>
                 <View style={styles.bar}></View>
                 <Text style={styles.text} numberOfLines={3}>{item.name}</Text>
