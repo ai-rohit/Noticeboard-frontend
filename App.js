@@ -1,8 +1,7 @@
 import "react-native-gesture-handler";
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet } from 'react-native';
-import Container from './components/Container';
-import GroupList from './components/GroupList';
+import { StyleSheet, Modal, View, Text, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import {SubTitle, Title} from "./components/AppText"
 import colors from './config/color';
 import TabNav from './navigation/TabNav';
 import { NavigationContainer } from '@react-navigation/native';
@@ -30,6 +29,26 @@ export default function App() {
           
           {/* <Login/> */}
           {token? <TabNav/> : <AuthStack/>}
+          <Modal visible={isProfileModalOpen} transparent={true} style={{backgroundColor:"red"}} animationType="slide">
+            <TouchableOpacity style={styles.modalContainer} onPress={() => { setIsProfileModalOpen(false)}}>
+                <TouchableOpacity style={styles.modal} onPress={() => console.log('do nothing')} activeOpacity={1} >
+                  <Title>Rohit Shrestha</Title>
+                  <TouchableOpacity onPress={()=>{console.log("Profile")}}>
+                    <SubTitle>Profile</SubTitle>
+                  </TouchableOpacity>
+                  <View style={{width:"90%", height:1, backgroundColor:colors.dimWhite}}/>
+                  <TouchableOpacity onPress={()=>{console.log("Profile")}}>
+                    <SubTitle>App Settings</SubTitle>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={()=>{console.log("Profile")}}>
+                    <SubTitle>Help and FAQs</SubTitle>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={()=>{console.log("Profile")}}>
+                    <SubTitle>Logout</SubTitle>
+                  </TouchableOpacity>
+                </TouchableOpacity>
+              </TouchableOpacity>
+          </Modal>
       </NavigationContainer>
     </ModalContext.Provider>
   );
@@ -48,5 +67,20 @@ const styles = StyleSheet.create({
     width:"100%",
     alignItems: 'center',
     justifyContent: 'center',
-  }
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor:"rgba(0,0,0,0.7)"
+  },
+  modal: {
+    width: "100%",
+    height: "40%",
+    backgroundColor:colors.mainDark,
+    position:"absolute",
+    bottom:0,
+    borderTopRightRadius: 15,
+    borderTopLeftRadius: 15
+  },
 });

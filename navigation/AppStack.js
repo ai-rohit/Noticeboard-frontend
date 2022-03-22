@@ -31,8 +31,8 @@ function AppStack(){
       ),
       headerStyle:{
         backgroundColor:"#363642",
-        borderBottomWidth:5,
-        borderBottomColor:"#363642"
+        borderBottomColor:"#363642",
+        shadowColor: "transparent"
       }
     
     }}>
