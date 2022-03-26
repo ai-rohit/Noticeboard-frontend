@@ -2,21 +2,23 @@ import {TextInput, StyleSheet, Dimensions, View} from "react-native";
 import colors from "../config/color";
 import {Ionicons} from "@expo/vector-icons"
 
-function TextBox({placeholder, onChange, value, icon, isSecured, lines}){
+function TextBox({placeholder, onChange, value, icon, isSecured, lines, onFocus, customStyles}){
     return (
-        <View style={styles.inputContainer}>
+        <View style={[styles.inputContainer, customStyles]}>
             <TextInput
             underlineColorAndroid="transparent"
             multiline={lines? true: false}
             numberOfLines={lines? lines:1}
             spellCheck={false}
             secureTextEntry={isSecured? isSecured:false} 
-            style={styles.textbox}
+            style={[styles.textbox, customStyles]}
             placeholder={placeholder} 
             placeholderTextColor={colors.dimWhite}
             placeholderStyle={styles.placeholder}
             onChangeText={(text)=> onChange? onChange(text):null}
+            onFocus={()=> onFocus? onFocus():null}
             value={value}
+            clearButtonMode="always"
             />
 
             {icon?<Ionicons name={icon.name} size={20} color={colors.dimWhite} style={styles.icon} onPress={()=> icon.onPress?icon.onPress():null}/>:null}  

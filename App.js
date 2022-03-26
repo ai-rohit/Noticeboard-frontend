@@ -9,6 +9,7 @@ import AuthStack from "./navigation/AuthStack";
 import { getData, removeData } from "./utils/authStorage";
 import { useEffect, useState } from "react";
 import { ModalContext } from "./context/context";
+import {Ionicons} from "@expo/vector-icons";
 
 export default function App() {
   const [token, setToken] = useState(null);
@@ -36,10 +37,11 @@ export default function App() {
           <TabNav/>
           <Modal visible={isProfileModalOpen} transparent={true} style={{backgroundColor:"red"}} animationType="slide">
             <TouchableOpacity style={styles.modalContainer} onPress={() => { setIsProfileModalOpen(false)}}>
-                <TouchableOpacity style={styles.modal} onPress={() => console.log('do nothing')} activeOpacity={1} >
+                <TouchableOpacity style={styles.modal} onPress={() => {return}} activeOpacity={1} >
                   <Title>Rohit Shrestha</Title>
-                  <TouchableOpacity onPress={()=>{console.log("Profile")}}>
-                    <SubTitle>Profile</SubTitle>
+                  <TouchableOpacity onPress={()=>{console.log("Profile")}} style={styles.profileOpt}>
+                    <Ionicons name="md-person-circle-sharp" color={colors.mainWhite} size={30}/>
+                    <SubTitle style={styles.profileTxt}>Profile</SubTitle>
                   </TouchableOpacity>
                   <View style={{width:"90%", height:1, backgroundColor:colors.dimWhite}}/>
                   <TouchableOpacity onPress={()=>{console.log("Profile")}}>
@@ -49,7 +51,7 @@ export default function App() {
                     <SubTitle>Help and FAQs</SubTitle>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={()=>{handleLogout()}}>
-                    <SubTitle>Logout</SubTitle>
+                    <SubTitle>Log out</SubTitle>
                   </TouchableOpacity>
                 </TouchableOpacity>
               </TouchableOpacity>
@@ -84,8 +86,17 @@ const styles = StyleSheet.create({
     height: "40%",
     backgroundColor:colors.mainDark,
     position:"absolute",
+    justifyContent:"space-evenly",
+    padding: 10,
     bottom:0,
     borderTopRightRadius: 15,
     borderTopLeftRadius: 15
   },
+  profileOpt:{
+    flexDirection: "row",
+    alignItems: "center"
+  },
+  profileTxt:{
+    marginLeft: 5
+  }
 });
