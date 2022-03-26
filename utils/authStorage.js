@@ -8,4 +8,8 @@ const getData = async (key)=>{
   return await AsyncStorage.getItem(key);
 }
 
-export {storeData, getData};
+const removeData = async (key)=>{
+  await AsyncStorage.removeItem(key);
+}
+
+export {storeData, getData, removeData};

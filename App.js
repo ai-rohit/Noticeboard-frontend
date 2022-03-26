@@ -6,7 +6,7 @@ import colors from './config/color';
 import TabNav from './navigation/TabNav';
 import { NavigationContainer } from '@react-navigation/native';
 import AuthStack from "./navigation/AuthStack";
-import { getData } from "./utils/authStorage";
+import { getData, removeData } from "./utils/authStorage";
 import { useEffect, useState } from "react";
 import { ModalContext } from "./context/context";
 
@@ -18,6 +18,10 @@ export default function App() {
     const token = await getData("token");
     setToken(token);
   }
+
+  const handleLogout = () =>{
+    removeData("token");
+  }
   useEffect(()=>{
     getToken();
   })
@@ -28,7 +32,8 @@ export default function App() {
           {/* <TabNav/> */}
           
           {/* <Login/> */}
-          {token? <TabNav/> : <AuthStack/>}
+          {/* {token? <TabNav/> : <AuthStack/>} */}
+          <TabNav/>
           <Modal visible={isProfileModalOpen} transparent={true} style={{backgroundColor:"red"}} animationType="slide">
             <TouchableOpacity style={styles.modalContainer} onPress={() => { setIsProfileModalOpen(false)}}>
                 <TouchableOpacity style={styles.modal} onPress={() => console.log('do nothing')} activeOpacity={1} >
@@ -43,7 +48,7 @@ export default function App() {
                   <TouchableOpacity onPress={()=>{console.log("Profile")}}>
                     <SubTitle>Help and FAQs</SubTitle>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={()=>{console.log("Profile")}}>
+                  <TouchableOpacity onPress={()=>{handleLogout()}}>
                     <SubTitle>Logout</SubTitle>
                   </TouchableOpacity>
                 </TouchableOpacity>

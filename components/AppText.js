@@ -3,7 +3,6 @@ import {Text, Platform, StyleSheet} from "react-native";
 import colors from "../config/color";
 
 const Title = React.memo(function Title({children, customStyles}){
-    console.log("title");
     return (
         <Text style={[styles.title, customStyles]}>{children}</Text>
     )
@@ -11,7 +10,6 @@ const Title = React.memo(function Title({children, customStyles}){
 )
 
 const SubTitle = React.memo(function SubTitle({children, customStyles}){
-    console.log("subtitle");
     return (
         <Text style={[styles.subTitle, customStyles]}>{children}</Text>
     )
@@ -19,7 +17,6 @@ const SubTitle = React.memo(function SubTitle({children, customStyles}){
 )
 
 const AppText = React.memo(function AppText({children, customStyles, onPress}){
-    console.log("t");
     return (
         <Text style={[styles.text, customStyles]}>{children}</Text>
     )

@@ -3,7 +3,9 @@ import React, {useContext} from "react";
 import {ModalContext} from "../context/context";
 import Groups from "../screens/Groups";
 import NoticeScreen from "../screens/NoticeScreen";
-import {TouchableOpacity, Image, StyleSheet, Modal} from "react-native"
+import {TouchableOpacity, Image, StyleSheet} from "react-native"
+import JoinGroup from "../screens/JoinGroup";
+import SearchScreen from "../screens/SearchScreen";
 
 const Stack = createStackNavigator();
 
@@ -38,7 +40,8 @@ function AppStack(){
     }}>
       <Stack.Screen name="GroupList" component={Groups} options={{title:"Groups"}}/>
       <Stack.Screen name="Notices" component={NoticeScreen} options={{title:"Notices"}}/>
-
+      <Stack.Screen name="JoinGroup" component={JoinGroup} options={{title:"Join Board"}}/>
+      <Stack.Screen name="SearchGroup" component={SearchScreen} options={{title:"Search Board", headerShown: false}}/>
     </Stack.Navigator>
   );
 }
