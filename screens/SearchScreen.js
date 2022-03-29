@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Dimensions, FlatList, Image, TouchableOpacity }
 import Container from "../components/Container";
 import TextBox from "../components/TextBox";
 
-const SearchScreen = ()=>{
+const SearchScreen = ({navigation})=>{
   const [keyword, setKeyword] = useState("");
   const [boards, setBoards] = useState([]);
 
@@ -51,6 +51,11 @@ const SearchScreen = ()=>{
   const onFocusInput = ()=>{
     console.log("focused")
   }
+
+  const navigateToNotice = ()=>{
+    navigation.navigate("Notices");
+}
+
   // const inputRef = useRef();
   return(
     <Container>
@@ -68,7 +73,7 @@ const SearchScreen = ()=>{
         keyExtractor={(item)=> item._id}
         renderItem={({item})=>{
           return (
-            <TouchableOpacity style={styles.itemContainer}>
+            <TouchableOpacity style={styles.itemContainer} onPress={()=>navigateToNotice()}>
               <Image source={require("../assets/favicon.png")} style={styles.image}/>
               <Text style={styles.text} numberOfLines={2}>{item.name}</Text>
             </TouchableOpacity>
